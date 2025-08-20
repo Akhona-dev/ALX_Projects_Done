@@ -1,1 +1,1 @@
-The Api im creating is a daily planner api that will help people manage their daly tasks.
+THis repo contains all the projects I've done with/while in ALX.
