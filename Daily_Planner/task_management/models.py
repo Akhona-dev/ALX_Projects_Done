@@ -1,7 +1,12 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
 """the following line of code creates a table named Tasks"""
+
+#------------------------------------------------------------
+#first table
+#------------------------------------------------------------
 
 class Tasks(models.Model):
     morning = models.TextField()  # morning is a column in this table
