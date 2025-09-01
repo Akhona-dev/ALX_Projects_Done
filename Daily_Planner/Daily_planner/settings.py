@@ -1,14 +1,15 @@
 import os
 from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # -------------------------
 # Security
 # -------------------------
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret')  # dev fallback
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret')  
 DEBUG = False  # must be False in production
-ALLOWED_HOSTS = ['Daily_planner.com', 'www.Daily_planner.com']  # replace with your real domain
+ALLOWED_HOSTS = ["*", ".up.railway.app"]
 
 # -------------------------
 # Installed apps
@@ -55,15 +56,9 @@ WSGI_APPLICATION = 'Daily_planner.wsgi.application'
 # -------------------------
 # Database
 # -------------------------
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'DAILY'),
-        'USER': os.environ.get('DB_USER', 'daily_user'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'password_here'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': '3306',
-    }
+    "default": dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 # -------------------------
