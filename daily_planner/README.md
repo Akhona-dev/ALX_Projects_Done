@@ -14,3 +14,6 @@ this project will have views allowing for CRUD operations along with urls that w
 
 #this one is one i created after failing to deploy the first one wich i renamed
 #to new file
+
+
+#i finally managed to deploy this one.

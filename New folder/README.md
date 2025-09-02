@@ -15,3 +15,5 @@ this project will have views allowing for CRUD operations along with urls that w
 
 #this is the project ive been working on for so long but had to create a new
 #one cause i was failing to deploy it
+
+pease use the one with the actual name on it.
