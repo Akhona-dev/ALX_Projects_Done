@@ -52,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Daily_planner.wsgi.application'
+WSGI_APPLICATION = 'daily_planner.wsgi.application'
 
 # -------------------------
 # Database

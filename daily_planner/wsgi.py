@@ -1,5 +1,5 @@
 """
-WSGI config for Daily_planner project.
+WSGI config for daily_planner project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

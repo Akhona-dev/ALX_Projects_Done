@@ -1,5 +1,5 @@
 """
-ASGI config for Daily_planner project.
+ASGI config for daily_planner project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
