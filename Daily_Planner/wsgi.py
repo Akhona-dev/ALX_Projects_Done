@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Daily_Planner.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'daily_planner.settings')
 
 application = get_wsgi_application()
