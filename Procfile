@@ -1,1 +1,1 @@
-web: gunicorn daily_planner.wsgi
+web: gunicorn Daily_planner.wsgi
