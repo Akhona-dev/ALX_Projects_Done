@@ -17,9 +17,22 @@ class UserRegistrationAPIView(generics.CreateAPIView):
 #first view
 #----------------------------------------
 
+
 class TasksListAPIView(generics.ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
+
+    """this line of code brings the serializer class that will be responsible for converting 
+       the data queried
+    """
+
+    serializer_class = TasksSerializer
+
+    """this method overrides the get_queryset method of this class and brings back tasks of only
+        the currently logged in user
+    """
+    def get_queryset(self):
+        return Tasks.objects.filter(user=self.request.user)
 
     """this line of code gets all the instances/objects/rows from the Tasks table/model"""
     queryset = Tasks.objects.all()
