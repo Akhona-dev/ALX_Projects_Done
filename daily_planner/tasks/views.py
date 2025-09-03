@@ -1,7 +1,7 @@
 from rest_framework import generics 
 from .models import Tasks
 from .serializers import TasksSerializer, UserRegistrationSerializer
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth.models import User
 
 #----------------------------------------
@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 class UserRegistrationAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
+    permission_classes = [AllowAny]
 
 #----------------------------------------
 #first view
@@ -32,13 +33,7 @@ class TasksListAPIView(generics.ListAPIView):
     def get_queryset(self):
         return Tasks.objects.filter(author=self.request.user)
 
-    """this line of code gets all the instances/objects/rows from the Tasks table/model"""
-    queryset = Tasks.objects.all()
 
-    """this lie of code brings the serializer class that will be responsible for converting 
-       the data queried
-    """
-    serializer_class = TasksSerializer
 
 #-----------------------------------------------
 #second view

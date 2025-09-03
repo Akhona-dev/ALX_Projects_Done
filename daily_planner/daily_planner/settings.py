@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import dj_database_url
 
+
 # -------------------------
 # Paths
 # -------------------------
@@ -16,8 +17,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # -------------------------
 # Security
 # -------------------------
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')  # Must be set in Render environment
-DEBUG = False  # Always False in production
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret')  
+DEBUG = False  # must be False in production
 ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'localhost')]
 
 # -------------------------
@@ -30,11 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     'rest_framework',
-    'rest_framework.authtoken',
-    
-    'tasks',  # Your app
+    'tasks', 
 ]
 
 # -------------------------
@@ -80,9 +78,9 @@ TEMPLATES = [
 # -------------------------
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),  # Must be set in Render environment
-        conn_max_age=600,  # Keep connections alive 10 mins
-        ssl_require=True    # Force SSL on production
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,   # keep DB connections alive for 10 min
+        ssl_require=True    # force SSL on production
     )
 }
 
@@ -123,9 +121,11 @@ STORAGES = {
 # -------------------------
 # Django REST Framework
 # -------------------------
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
