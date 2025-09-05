@@ -61,3 +61,12 @@ class TasksDeleteAPIView(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
+
+#---------------------------------------------------
+#fith view
+#---------------------------------------------------
+
+class TaskUpdateAPIView(generics.UpdateAPIView):
+    queryset = Tasks.objects.all()
+    serializer_class = TasksSerializer
+    permission_classes = [IsAuthenticated]
