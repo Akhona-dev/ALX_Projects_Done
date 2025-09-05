@@ -13,7 +13,7 @@ class UserRegistrationAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
-    authentication_classes = [TokenAuthentication]
+    
 
 #----------------------------------------
 #first view
