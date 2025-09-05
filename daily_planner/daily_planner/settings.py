@@ -86,7 +86,7 @@ DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL'),
         conn_max_age=600,   # keep DB connections alive for 10 min
-        ssl_require= False   # force SSL on production
+        ssl_require= True   # force SSL on production
     )
 }
 
