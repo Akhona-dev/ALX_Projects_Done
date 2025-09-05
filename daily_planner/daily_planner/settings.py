@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # -------------------------
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret')  
 DEBUG = False  # must be False in production
-ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'localhost')]
+ALLOWED_HOSTS = [os.environ.get('.onrender.com', 'localhost')]
 
 # -------------------------
 # Installed Apps
@@ -76,11 +76,12 @@ TEMPLATES = [
 # -------------------------
 # Database
 # -------------------------
+
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL'),
         conn_max_age=600,   # keep DB connections alive for 10 min
-        ssl_require=True    # force SSL on production
+        ssl_require= False   # force SSL on production
     )
 }
 
