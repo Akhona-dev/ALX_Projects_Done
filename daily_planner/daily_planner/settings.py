@@ -19,7 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # -------------------------
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret')  
 DEBUG = False  # must be False in production
-ALLOWED_HOSTS = [os.environ.get('.onrender.com', 'localhost')]
+ALLOWED_HOSTS = [
+    os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'localhost'),
+    '.onrender.com',   # allow any subdomain of render.com
+    'localhost',
+    '127.0.0.1'
+]
 
 # -------------------------
 # Installed Apps
