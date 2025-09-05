@@ -80,4 +80,5 @@ class TaskUpdateAPIView(generics.UpdateAPIView):
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 

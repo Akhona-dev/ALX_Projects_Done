@@ -2,13 +2,12 @@ from django.urls import path
 from . import views
 from .views import UserRegistrationAPIView
 from rest_framework.authtoken.views import obtain_auth_token
-from django.contrib.auth import views as auth_views
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
 
     path('api/register/', UserRegistrationAPIView.as_view(), name='api_register'),
-    path('api/login/', auth_views.LoginView.as_view(), name='login'),
-    path('api/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('api/token-auth/', obtain_auth_token, name='api_token_auth'),
 
     path('Tasks/list/',views.TasksListAPIView.as_view(), name = 'list-tasks'),
     path('Tasks/create/',views.TasksCreateAPIView.as_view(), name = 'create-tasks'),

@@ -3,6 +3,7 @@ from .models import Tasks
 from .serializers import TasksSerializer, UserRegistrationSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth.models import User
+from rest_framework.authentication import TokenAuthentication
 
 #----------------------------------------
 #user reg
@@ -12,6 +13,7 @@ class UserRegistrationAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
+    authentication_classes = [TokenAuthentication]
 
 #----------------------------------------
 #first view
@@ -43,6 +45,7 @@ class TasksCreateAPIView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
+    authentication_classes = [TokenAuthentication]
 
 #--------------------------------------------------
 #third view
@@ -52,6 +55,7 @@ class TasksRetrieveAPIView(generics.RetrieveAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
+    authentication_classes = [TokenAuthentication]
 
 #---------------------------------------------------
 #fourth view
@@ -61,6 +65,7 @@ class TasksDeleteAPIView(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
+    authentication_classes = [TokenAuthentication]
 
 #---------------------------------------------------
 #fith view
@@ -70,3 +75,4 @@ class TaskUpdateAPIView(generics.UpdateAPIView):
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
